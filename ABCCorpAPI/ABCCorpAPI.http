@@ -1,0 +1,6 @@
+@ABCCorpAPI_HostAddress = http://localhost:5178
+
+GET {{ABCCorpAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
