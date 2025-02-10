@@ -50,7 +50,6 @@ namespace ABCCorp.Infrastructure
             _dbContext.Task.AddRange(taskEntities);
             await _dbContext.SaveChangesAsync();
 
-            // Return the DTOs after saving
             return tasks;
         }
     }

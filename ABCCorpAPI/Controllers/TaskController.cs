@@ -13,13 +13,6 @@ namespace ABCCorp.API.Controllers
     
     public class TaskController: ControllerBase
     {
-        //private readonly ITaskRepository _taskService;
-
-
-        //public TaskController(ITaskRepository taskService)
-        //{
-        //    _taskService = taskService;
-        //}
         private readonly ABCCorpDbContext _context;
 
         public TaskController(ABCCorpDbContext taskService)

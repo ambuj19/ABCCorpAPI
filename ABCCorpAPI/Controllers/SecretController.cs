@@ -10,12 +10,19 @@ namespace ABCCorp.API.Controllers
     {
         private readonly KeyVaultService _keyVaultService;
 
-        public SecretController()
+        public SecretController(IConfiguration configuration)
         {
-            string keyVaultUrl = "https://text-to-stats-abc.vault.azure.net/"; // Key Vault URL
+            // Read Key Vault URL from appsettings.json
+            string keyVaultUrl = configuration["AzureKeyVault:Url"];
+
+            if (string.IsNullOrEmpty(keyVaultUrl))
+            {
+                throw new ArgumentNullException(nameof(keyVaultUrl), "Key Vault URL is not configured.");
+            }
+
+            // Initialize KeyVaultService with the URL from appsettings.json
             _keyVaultService = new KeyVaultService(keyVaultUrl);
         }
-
         [HttpGet("{secretName}")]
         public async Task<IActionResult> GetSecret(string secretName)
         {

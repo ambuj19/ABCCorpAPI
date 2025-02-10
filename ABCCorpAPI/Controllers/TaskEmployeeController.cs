@@ -16,16 +16,13 @@ namespace ABCCorp.API.Controllers
         [HttpPost("{employeeId}")]
         public async Task<IActionResult> AddEmployeeTask(int employeeId, [FromBody] EmployeeTaskDto employeeTaskDto)
         {
-            // Check if the input data is valid
             if (employeeTaskDto == null)
             {
                 return BadRequest("Invalid data.");
             }
 
-            // Call the service method to add the employee task and fetch updated tasks
             var result = await _taskEmpoyeeRepository.AddEmployeeTaskAsync(employeeId, employeeTaskDto);
 
-            // Return the updated list of employee tasks for the employee
             return Ok(result);
         }
 
